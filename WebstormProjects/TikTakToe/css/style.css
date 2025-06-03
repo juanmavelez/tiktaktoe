@@ -1,0 +1,134 @@
+:root{
+    --black: black;
+    --white: white;
+    --gray: gray;
+    --red: red;
+    --green: green;
+    --blue: #2563eb;
+    --border-radius: 8px;
+    --cell-size: 100px;
+    --hypotenuse:  141.42px;
+    --lineWidth: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 4rem;
+  font-size: 1rem;
+  display: grid;
+  place-content: center;
+  gap: 1.5rem;
+  font-family: system-ui, sans-serif;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 0 auto;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1.5rem;
+  color: var(--gray);
+}
+
+.X-cell {
+    color: var(--green);
+}
+
+.O-cell {
+    color: var(--red);
+}
+
+.board {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(3, max-content);
+  place-items: center;
+}
+
+.cell {
+  position: relative;
+  font-size: calc(var(--cell-size)/2);
+  font-weight: bold;
+  border-radius: var(--border-radius);
+  width: var(--cell-size);
+  height: var(--cell-size);
+  background-color: var(--white);
+  border: 3px solid var(--black);
+  display: inline-block;
+  text-align: center;
+  line-height: 100px;
+}
+
+.reset-button {
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  border: none;
+  background-color: var(--blue);
+  color: var(--white);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.win1::after {
+    --oversize: 26px;
+    content: '';
+    z-index: 2;
+    position: absolute;
+    top: calc(-1 * var(--oversize)/2);
+    left: calc(var(--cell-size) / 2 - var(--lineWidth)/ 2);
+    width: 0.5rem;
+    height: calc(var(--cell-size) + var(--oversize));
+    background-color: var(--blue);
+}
+
+.win2::after {
+  --oversize: 26px;
+  content: '';
+  z-index: 2;
+  position: absolute;
+  top: calc(-1 * var(--oversize)/2);
+  left: calc(var(--cell-size) / 2 - var(--lineWidth)/ 2);
+  width: 0.5rem;
+  height: calc(var(--cell-size) + var(--oversize));
+  background-color: var(--blue);
+  rotate: 90deg;
+}
+
+.win3::after {
+    --oversize: 26px;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--hypotenuse) + calc(2 * var(--oversize)));
+    height: 4px;
+    background-color: var(--blue);
+    transform: translate(-50%, -50%) rotate(45deg);
+    transform-origin: center;
+    z-index: 2;
+}
+
+.win4::after {
+    --oversize: 26px;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--hypotenuse) + calc(2 * var(--oversize)));
+    height: 4px;
+    background-color: var(--blue);
+    transform: translate(-50%, -50%) rotate(-45deg);
+    transform-origin: center;
+    z-index: 2;
+}
+
